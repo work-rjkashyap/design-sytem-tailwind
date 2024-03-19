@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="style.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" integrity="sha512-MqL4+Io386IOPMKKyplKII0pVW5e+kb+PI/I3N87G3fHIfrgNNsRpzIXEi+0MQC0sR9xZNqZqCYVcC61fL5+Vg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>
+        Home Page
+    </title>
+  </head>
+  <body >
+    <header>
+       
+            <div class="container flex flex-row justify-between  ">
+                <h1>Dark Mode Toggle</h1>
+                
+                <div class="mode-icon">
+                   <!-- Onclick smooth toggle icon -->
+                   <div class="dark-mode-button">
+                   <!-- //? Toggle Icon -->
+                   
+                     <button class="btn rounded btn-invert" id="toggle-btn" >
+                        <i class="ri-moon-fill" id="mode-icon"></i>
+                     </button>
+                   
+                   </div>
+                  </div>
+            </div>
+        
+    </header>
+    <div class="container">
+       
+
+        <div class="card">
+          <h4>Card Title</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            convallis libero in dui sollicitudin, nec aliquam dui lacinia.
+            Phasellus auctor, justo et tincidunt aliquet, ex nunc fermentum
+            tortor, nec tincidunt nunc turpis a libero.
+          </p>
+
+            <button>Read More</button>
+
+            <!-- Buttons -->
+            <div class="conatiner">
+                <button class="btn">button</button>
+                <button class="btn btn-primary ">Primary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-warning">Warning</button>
+                <button class="btn btn-info">Info</button>
+                <button class="btn btn-light">Light</button>
+                <button class="btn btn-dark">Dark</button>
+                <button class="btn btn-link">Link</button>
+
+            </div>
+
+        </div>
+
+     
+    </div>
+
+    <script>
+        
+       
+
+        //? Toggle Dark Mode
+        document.getElementById('toggle-btn').addEventListener('click', () => {
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                document.documentElement.classList.remove('dark')
+                localStorage.setItem('dark-mode', 'disabled')
+                
+                document.getElementById('mode-icon').classList.remove('ri-sun-fill')
+                document.getElementById('mode-icon').classList.add('ri-moon-fill')
+                
+                 document.getElementById('mode-icon').classList.add('ease-in-out')
+
+
+
+
+            } else {
+                document.documentElement.classList.add('dark')
+                localStorage.setItem('dark-mode', 'enabled')
+              
+                document.getElementById('mode-icon').classList.remove('ri-moon-fill')
+                document.getElementById('mode-icon').classList.add('ri-sun-fill')
+                document.getElementById('mode-icon').classList.add('ease-in-out')
+            }
+        })
+
+        //? Check for dark mode
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            document.documentElement.classList.add('dark')
+            document.getElementById('mode-icon').classList.remove('ri-moon-fill')
+            document.getElementById('mode-icon').classList.add('ri-sun-fill')
+        } else {
+            document.documentElement.classList.remove('dark')
+            document.getElementById('mode-icon').classList.remove('ri-sun-fill')
+            document.getElementById('mode-icon').classList.add('ri-moon-fill')
+        }
+
+        // ? check local storage for dark mode on page load if not set default to system preference
+        if (localStorage.getItem('dark-mode') === null) {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark')
+                localStorage.setItem('dark-mode', 'enabled')
+                document.getElementById('mode-icon').classList.remove('ri-moon-fill')
+                document.getElementById('mode-icon').classList.add('ri-sun-fill')
+            } else {
+                document.documentElement.classList.remove('dark')
+                localStorage.setItem('dark-mode', 'disabled')
+                document.getElementById('mode-icon').classList.remove('ri-sun-fill')
+                document.getElementById('mode-icon').classList.add('ri-moon-fill')
+            }
+        }
+
+       
+    </script>
+   
+    
+
+
+  </body>
+</html>
